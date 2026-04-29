@@ -15,6 +15,7 @@
 - Do not add `# type: ignore` or `# ty: ignore`; fix the underlying type issue.
 - All 5 checks are enforced in `tests.yml` on push/merge.
 - Personal preference: run `uv run ruff format` before committing even during exploratory work — keeps diffs clean.
+- Personal preference: run `uv run pytest -x` (fail-fast) during development to surface the first failure quickly rather than wading through a full test report.
 
 ## IDENTITY & CONTEXT
 
@@ -23,6 +24,7 @@
 - Code: Write the simplest code possible. Keep the codebase minimal and modular.
 - Personal note: When in doubt, add a test before touching the implementation — it clarifies intent and prevents regressions.
 - Personal note: Prefer explicit error messages over silent failures — always surface the root cause in exceptions.
+- Personal note: When exploring unfamiliar code paths, use `print()` statements freely during local dev, but remove them before committing.
 
 ## ARCHITECTURE PRINCIPLES (see PLAN.md)
 
@@ -35,9 +37,3 @@
 - **Platform-agnostic naming**: Use generic names (e.g. `PLATFORM_EDIT`) not platform-specific ones (e.g. `TELEGRAM_EDIT`) in shared code.
 - **No type ignores**: Do not add `# type: ignore` or `# ty: ignore`. Fix the underlying type issue.
 - **Complete migrations**: When moving modules, update imports to the new owner and remove old compatibility shims in the same change unless preserving a published interface is explicitly required.
-- **Maximum Test Coverage**: There should be maximum test coverage for everything, preferably live smoke test coverage to catch bugs early
-
-## COGNITIVE WORKFLOW
-
-1. **ANALYZE**: Read relevant files. Do not guess.
-2. **PLAN**: Map out
