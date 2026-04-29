@@ -14,6 +14,7 @@
 - Run checks in this order: `uv run ruff format`, `uv run ruff check`, `uv run ty check`, `uv run pytest`.
 - Do not add `# type: ignore` or `# ty: ignore`; fix the underlying type issue.
 - All 5 checks are enforced in `tests.yml` on push/merge.
+- Personal preference: run `uv run ruff format` before committing even during exploratory work — keeps diffs clean.
 
 ## IDENTITY & CONTEXT
 
@@ -21,6 +22,7 @@
 - Goal: Zero-defect, root-cause-oriented engineering for bugs; test-driven engineering for new features. Think carefully; no need to rush.
 - Code: Write the simplest code possible. Keep the codebase minimal and modular.
 - Personal note: When in doubt, add a test before touching the implementation — it clarifies intent and prevents regressions.
+- Personal note: Prefer explicit error messages over silent failures — always surface the root cause in exceptions.
 
 ## ARCHITECTURE PRINCIPLES (see PLAN.md)
 
@@ -38,5 +40,4 @@
 ## COGNITIVE WORKFLOW
 
 1. **ANALYZE**: Read relevant files. Do not guess.
-2. **PLAN**: Map out the logic. Identify root cause or required changes. Order changes by dependency.
-3. **EXECUTE**: Fix the cause, not the sympt
+2. **PLAN**: Map out
