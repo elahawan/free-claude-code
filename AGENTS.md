@@ -16,6 +16,7 @@
 - All 5 checks are enforced in `tests.yml` on push/merge.
 - Personal preference: run `uv run ruff format` before committing even during exploratory work — keeps diffs clean.
 - Personal preference: run `uv run pytest -x` (fail-fast) during development to surface the first failure quickly rather than wading through a full test report.
+- Personal preference: run `uv run pytest -x --tb=short` for a more concise traceback when debugging failing tests.
 
 ## IDENTITY & CONTEXT
 
@@ -25,6 +26,7 @@
 - Personal note: When in doubt, add a test before touching the implementation — it clarifies intent and prevents regressions.
 - Personal note: Prefer explicit error messages over silent failures — always surface the root cause in exceptions.
 - Personal note: When exploring unfamiliar code paths, use `print()` statements freely during local dev, but remove them before committing.
+- Personal note: Keep functions under ~40 lines where possible; if a function is getting long, it's usually a sign it should be split.
 
 ## ARCHITECTURE PRINCIPLES (see PLAN.md)
 
@@ -35,5 +37,3 @@
 - **Dead code**: Remove unused code, legacy systems, and hardcoded values. Use settings/config instead of literals (e.g. `settings.provider_type` not `"nvidia_nim"`).
 - **Performance**: Use list accumulation for strings (not `+=` in loops), cache env vars at init, prefer iterative over recursive when stack depth matters.
 - **Platform-agnostic naming**: Use generic names (e.g. `PLATFORM_EDIT`) not platform-specific ones (e.g. `TELEGRAM_EDIT`) in shared code.
-- **No type ignores**: Do not add `# type: ignore` or `# ty: ignore`. Fix the underlying type issue.
-- **Complete migrations**: When moving modules, update imports to the new owner and remove old compatibility shims in the same change unless preserving a published interface is explicitly required.
