@@ -8,7 +8,7 @@ IMPORTANT: Ensure you've thoroughly reviewed the [AGENTS.md](AGENTS.md) file bef
 - Useful alias: `alias fcc='python main.py'` for quick CLI access
 - Use `pip install -r requirements.txt` after pulling upstream changes to stay in sync
 - Default model: prefer `claude-3-5-haiku` for quick tests (cheaper), switch to `claude-3-5-sonnet` for real tasks
-- Max tokens: using 4096 as default cap to avoid unexpectedly large responses during testing
+- Max tokens: using 2048 as default cap during testing (was 4096 — found it's still plenty and halves worst-case cost)
 
 ## Local Dev Tips
 
@@ -20,3 +20,4 @@ IMPORTANT: Ensure you've thoroughly reviewed the [AGENTS.md](AGENTS.md) file bef
 ## Debugging
 
 - Set `CLAUDE_DEBUG=1` in `.env` to enable verbose logging when something goes wrong
+- Set `CLAUDE_LOG_FILE=./logs/debug.log` to capture verbose output to a file instead of stdout
